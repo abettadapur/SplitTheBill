@@ -1,0 +1,90 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SplitTheBill.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" 
+    xmlns:my="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" Loaded="PhoneApplicationPage_Loaded"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" xmlns:my1="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI">
+<toolkit:TransitionService.NavigationInTransition>
+    <toolkit:NavigationInTransition>
+        <toolkit:NavigationInTransition.Backward>
+            <toolkit:TurnstileTransition Mode="BackwardIn"/>
+        </toolkit:NavigationInTransition.Backward>
+        <toolkit:NavigationInTransition.Forward>
+            <toolkit:TurnstileTransition Mode="ForwardIn"/>
+        </toolkit:NavigationInTransition.Forward>
+    </toolkit:NavigationInTransition>
+</toolkit:TransitionService.NavigationInTransition>
+<toolkit:TransitionService.NavigationOutTransition>
+    <toolkit:NavigationOutTransition>
+        <toolkit:NavigationOutTransition.Backward>
+            <toolkit:TurnstileTransition Mode="BackwardOut"/>
+        </toolkit:NavigationOutTransition.Backward>
+        <toolkit:NavigationOutTransition.Forward>
+            <toolkit:TurnstileTransition Mode="ForwardOut"/>
+        </toolkit:NavigationOutTransition.Forward>
+    </toolkit:NavigationOutTransition>
+</toolkit:TransitionService.NavigationOutTransition>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="SPLITTHEBILL" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="PageTitle" Text="Welcome!" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Width="310"/>
+                <my:RoundButton Name="continueButton" Content="Next Step" FontSize="24" ImageSource="/SplitTheBill;component/Images/appbar.next.rest.png" Click="continueButton_Click" Width="149" />
+            </StackPanel>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid Name="LayoutGrid" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="How many people are in your party?" Grid.ColumnSpan="2"/>
+                <my:SuperSlider Value="2" Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Orientation="Vertical" Step="1" Maximum="7" Name="peopleSlider" ValueChanged="peopleSlider_ValueChanged" />
+                <Image toolkit:TiltEffect.IsTiltEnabled="True" Grid.Column="1" Grid.Row="1" Name="UpButton" Tap="ImageUp_Tap" Source="/SplitTheBill;component/Images/img-thing.png" Margin="0,19,0,14" />
+                <TextBlock Name="sliderBlock" Grid.Row="2" Grid.Column="1" TextAlignment="Center" Text="2" VerticalAlignment="Center" FontSize="125"/>
+                <Image toolkit:TiltEffect.IsTiltEnabled="True"  Grid.Column="1" Grid.Row="3" Name="DownButton" Tap="ImageDown_Tap" Source="/SplitTheBill;component/Images/img-thing (1).png" Margin="0,19,0,14" />
+                <my1:AdControl AdUnitId="10024208" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" ApplicationId="cbbd4618-4898-43d1-b861-69d7dd9558f8" AllowDrop="False" />
+            </Grid>
+            </Grid>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,16 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="SplitTheBill" EntryPointType="SplitTheBill.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="SplitTheBill" Source="SplitTheBill.dll" />
+    <AssemblyPart x:Name="AgiliTrain.PhoneyTools" Source="AgiliTrain.PhoneyTools.dll" />
+    <AssemblyPart x:Name="AgiliTrain.PhoneyTools.Microphone" Source="AgiliTrain.PhoneyTools.Microphone.dll" />
+    <AssemblyPart x:Name="AgiliTrain.PhoneyTools.Net" Source="AgiliTrain.PhoneyTools.Net.dll" />
+    <AssemblyPart x:Name="Coding4Fun.Phone.Controls" Source="Coding4Fun.Phone.Controls.dll" />
+    <AssemblyPart x:Name="HtmlAgilityPack" Source="HtmlAgilityPack.dll" />
+    <AssemblyPart x:Name="Krempel.WP7.Core" Source="Krempel.WP7.Core.dll" />
+    <AssemblyPart x:Name="Microsoft.Advertising.Mobile" Source="Microsoft.Advertising.Mobile.dll" />
+    <AssemblyPart x:Name="Microsoft.Advertising.Mobile.UI" Source="Microsoft.Advertising.Mobile.UI.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
+    <AssemblyPart x:Name="System.Xml.XPath" Source="System.Xml.XPath.dll" />
+  </Deployment.Parts>
+</Deployment>

@@ -1,0 +1,111 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SplitTheBill.TipAndTax"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded" xmlns:my1="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI">
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="SPLITTHEBILL" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="PageTitle" Text="Tip / Tax" Width="310" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+                <my:RoundButton Name="continueButton" Content="Next Step" FontSize="24" ImageSource="/SplitTheBill;component/Images/appbar.next.rest.png" Click="continueButton_Click" Width="149" />
+            </StackPanel>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock FontSize="28" Text="Subtotal:" Grid.Row="0" Grid.Column="1"/>
+                <TextBlock FontSize="28" Text="Tax:" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock FontSize="28" Text="Tip:" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock FontSize="28" Text="Total - Tip:" Grid.Row="3" Grid.Column="1"/>
+                <TextBlock FontSize="28" Text="Total:" Grid.Row="4" Grid.Column="1"/>
+                
+                <TextBlock Text="Tip" Foreground="Green" Grid.Row="5" Grid.Column="1" FontSize="40" />
+                <TextBlock Text="Tax" Foreground="Red" Grid.Row="5" Grid.Column="3" FontSize="40" /> 
+                <TextBlock Text="%" VerticalAlignment="Center" FontSize="80" Grid.Row="6" Grid.Column="2"/>
+                <TextBlock Text="%" FontSize="80" Grid.Row="6" VerticalAlignment="Center" Grid.Column="4"/>
+                <TextBox InputScope="TelephoneNumber" Name="tipSliderBlock" Grid.Row="6" Grid.Column="1" TextAlignment="Center" Text="" VerticalAlignment="Center" FontSize="48" TextChanged="tipSliderBlock_TextChanged" />
+                <TextBox Name="sliderBlock" InputScope="TelephoneNumber" Grid.Row="6" Grid.Column="3" TextAlignment="Center" Text="" VerticalAlignment="Center" FontSize="48" TextChanged="sliderBlock_TextChanged" />
+                <TextBlock FontSize="28" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="150" TextAlignment="Right" Height="30" HorizontalAlignment="Right"  Name="subBlock"  VerticalAlignment="Top" />
+                <TextBlock FontSize="28" Grid.Row="1" Grid.Column="2" Foreground="Red" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="150" TextAlignment="Right" Height="30" HorizontalAlignment="Right"  Name="taxBlock"  VerticalAlignment="Top" />
+                <TextBlock FontSize="28" Grid.Row="2" Foreground="Green" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="150" TextAlignment="Right" Height="30" HorizontalAlignment="Right"  Name="tipBlock"  VerticalAlignment="Top" />
+                <TextBlock FontSize="28" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="150" TextAlignment="Right" Height="30" HorizontalAlignment="Right"  Name="tot1Block"  VerticalAlignment="Top" />
+                <TextBlock FontSize="28" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="150" TextAlignment="Right" Height="30" HorizontalAlignment="Right"  Name="tot2Block"  VerticalAlignment="Top" Text="" />
+                <my1:AdControl AdUnitId="10024208" ApplicationId="cbbd4618-4898-43d1-b861-69d7dd9558f8" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="7" VerticalAlignment="Bottom"  Name="adControl1" Height="79" />
+            </Grid>
+        </Grid>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
